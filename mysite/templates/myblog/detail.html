@@ -1,0 +1,11 @@
+{% extends "myblog/base.html" %}
+{% block content %}
+     <div class="container">
+        <div class="bloglist f_l">
+            <p style="font-size: 40px;">{{ artice.body|safe }}</p>
+
+        </div>
+     {% include "myblog/right.html" %}
+     </div>
+
+{% endblock %}

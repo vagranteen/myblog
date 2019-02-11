@@ -1,0 +1,37 @@
+{% extends "myblog/base.html" %}
+{% block content %}
+    <div class="container">
+        <div class="bloglist f_l">
+
+            <ul>
+                <li>
+                    {% for artic in allarticle %}
+
+                        <h3 class="blogtitle"><span><a href="{% url 'index' %}detail-{{ artic.id }}.html" title="css3"
+                                                       target="#" class="classname">个人博客</a></span><a
+                                href="{% url 'index' %}detail-{{ artic.id }}.html" target="_blank">{{ artic.title }}</a>
+                        </h3>
+                        <div class="bloginfo"><span class="blogpic"><a
+                                href="{% url 'index' %}detail-{{ artic.id }}.html"
+                                title="{{ artic.title }}"><img
+                                src=" /media/{{ artic.img }} " alt="{{ artic.title }}"></a></span>
+                            <p>{{ artic.excerpt }}</p>
+                        </div>
+
+                        <div class="autor"><span class="lm f_l"></span><span
+                                class="dtime f_l">{{ artic.created_time }}</span><span
+                                class="viewnum f_l">浏览（<a href="/">1429</a>）</span><span class="f_r"><a
+
+                                href="{% url 'index' %}detail-{{ artic.id }}.html" class="more">阅读原文&gt;&gt;</a></span>
+                        </div>
+                    {% endfor %}
+                </li>
+            </ul>
+
+
+        </div>
+
+        {% include "myblog/right.html" %}
+
+    </div>
+{% endblock %}
