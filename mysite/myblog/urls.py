@@ -15,18 +15,17 @@ Including another URLconf
 """
 
 from django.conf.urls import url
-from django.urls import path,re_path
+from django.urls import path, re_path
 from myblog import views
 from django.views.static import serve
 from django.conf import settings
 
-
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^newslistpic$', views.newslistpic),
-    url(r'^about/$', views.about,name='about'),
-    url(r'^listpic$', views.listpic),
-    path('detail-<int:aid>.html', views.detail),
+
+    url(r'^about/$', views.about, name='about'),
+    url(r'^listartic/$', views.listartic, name='listartic'),
+    path('listartic/detail-<int:aid>.html', views.detail),
     re_path('^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
 
 ]

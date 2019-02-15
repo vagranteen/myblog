@@ -19,5 +19,6 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('ueditor/', include('DjangoUeditor.urls')),
     url(r'^', include('myblog.urls')),
 ]
