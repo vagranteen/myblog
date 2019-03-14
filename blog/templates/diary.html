@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block content %}
+    <article>
+        <!--lbox begin-->
+        <div class="lbox">
+            <div class="whitebg lanmu"><img src="/static/images/track.jpg">
+                <h1>学习笔记</h1>
+                <p>学习过程当中，个人认为。有必要的记下来的东西</p>
+            </div>
+            <div class="whitebg bloglist">
+                <h2 class="htitle">博文列表</h2>
+                <ul>
+                    {% for article in diaryArticles %}
+                        <li>
+                            <h3 class="blogtitle"><a href="/" target="_blank">{{ article.title }}</a></h3>
+                            <span class="blogpic imgscale"><i><a href="/">
+                                {% for tag in article.tags.all %}
+                                    {{ tag }}
+                                {% endfor %}
+                            </a></i><a href="/" title=""><img
+                                    src="/media/{{ article.img }}" srcset="/media/{{ article.img }}" alt=""></a></span>
+                            <p class="blogtext">{{ article.excerpt | safe }}</p>
+
+                            <p class="bloginfo"><i class="avatar"><img
+                                    src="/static/images/w.jpg"></i><span>{{ article.user }}</span><span>{{ article.create_time |date:"y-m-d" }}</span><span>【<a
+                                    href="/">{{ article.category }}</a>】</span></p>
+                            <a href="/diary/{{ article.category }}/content-{{ article.id }}.html"
+                               class="viewmore">阅读更多</a>
+
+                        </li>
+                    {% endfor %}</ul>
+                <!--pagelist-->
+                <div class="pagination">
+                    <ul>
+                        {% if diaryArticles.has_previous %}
+                            <li class="prev-page"><a href="?page={{ diaryArticles.previous_page_number }}">上一页</a></li>
+                        {% else %}
+                            <li class="prev-page"></li>
+                        {% endif %}
+
+
+                        {% for num in diaryArticles.paginator.page_range %}
+                            {% if num %}
+                                {% ifequal num diaryArticles.number %}
+                                    <li class="active"><span>{{ num }}</span></li>
+                                {% else %}
+                                    <li><a href="?page={{ num }}">{{ num }}</a></li>
+                                {% endifequal %}
+                            {% else %}
+                                <li class="disabled"><span>...</span></li>
+                            {% endif %}
+                        {% endfor %}
+
+
+                        {% if diaryArticles.has_next %}
+                            <li class="next-page"><a href="?page={{ diaryArticles.next_page_number }}">下一页</a></li>
+                        {% else %}
+                            <li class="prev-page"></li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+            </div>
+
+            <!--bloglist end-->
+        </div>
+        <div class="rbox">
+        </div>
+        <div class="ad whitebg imgscale">
+
+            <div class="whitebg paihang">
+                <h2 class="htitle">点击排行</h2>
+                <section class="topnews imgscale"><img src="/static/images/h1.jpg"></section>
+
+                <ul>
+                    {% for  ra in rankArticles %}
+                        <li><i></i><a href="/diary/{{ ra.category }}/content-{{ ra.id }}.html">{{ ra.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="ad whitebg imgscale">
+                <ul>
+                    <a href="/"><img src="/static/images/ad.jpg"></a>
+                </ul>
+            </div>
+            <div class="whitebg tuijian">
+                <h2 class="htitle">本栏推荐</h2>
+                <section class="topnews imgscale"><img src="/static/images/h2.jpg"></section>
+                <ul>
+                    {% for refa in refArticles %}
+
+                        <li><a href="/diary/{{ refa.category }}/content-{{ refa.id }}.html"><i><img
+                            src="/media/{{ refa.img }}"></i>
+                        <p>{{ refa.title }}</p></a>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="ad whitebg imgscale">
+                <ul>
+                    <a href="/"><img src="/static/images/ad.jpg"></a>
+                </ul>
+            </div>
+        </div>
+    </article>
+{% endblock %}

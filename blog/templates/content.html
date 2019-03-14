@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% block content %}
+    <article>
+        <!--lbox begin-->
+        <div class="lbox">
+            <div class="content_box whitebg">
+                <h2 class="htitle"><span class="con_nav">您现在的位置是：<a href="/">网站首页</a>><a
+                        href="/">{{ article.category }}</a></span>{{ article.category }}
+                </h2>
+                <h1 class="con_tilte">{{ article.title }}</h1>
+                <p class="bloginfo"><i class="avatar"><img
+                        src="/static/images/w.jpg"></i><span>{{ article.user }}</span><span>{{ article.create_time|date:"y-m-d" }}</span><span>【<a
+                        href="/">{{ article.category }}</a>】</span><span>{{ article.views }}人已围观</span></p>
+                <p class="con_info"><b>简介</b>{{ article.excerpt }}</p>
+                <div class="con_text">
+                    {{ article.body|safe }}
+                    <p class="share"><b>转载：</b>感谢您对本站的认可，非常欢迎各位朋友分享到个人站长或者朋友圈，但转载请说明文章出处“来源燕永辉个人博客”。
+                    </p>
+                    <p><span class="diggit">很赞哦！ (74)</span></p>
+                    <div class="nextinfo">
+                        <div>
+                            <div><b>上一篇：</b>
+                                {% if netx_blog %}
+                                    <a href="content-{{ netx_blog.pk }}.html" class="article-tag">{{ netx_blog }}</a>
+                                {% else %}
+                                    没有了
+                                {% endif %}
+                            </div>
+                            <div><b>下一篇：</b>
+                                {% if previous_blog %}
+                                    <a href="content-{{ previous_blog.pk }}.html"
+                                       class="article-tag">{{ previous_blog }}</a>
+                                {% else %}
+                                    没有了
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="whitebg">
+                <h2 class="htitle">相关文章</h2>
+                <ul class="otherlink">
+                    {% for oa in otherArticles %}
+                        {% if oa.id == article.id %}
+                        {% else %}
+                            <li><a href="/diary/{{ oa.category }}/content-{{ oa.id }}.html"
+                                   title="{{ oa.title }}">{{ oa.title }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="whitebg gbook">
+                <h2 class="htitle">文章评论</h2>
+                <ul>
+                </ul>
+            </div>
+        </div>
+        <!--lbox end-->
+        <div class="rbox">
+        </div>
+        <div class="ad whitebg imgscale">
+            <ul>
+                <a href="/"><img src="/static/images/ad.jpg"></a>
+            </ul>
+            <div class="whitebg paihang">
+                <h2 class="htitle">点击排行</h2>
+                {#                <section class="topnews imgscale"><a href="/"><img src="/static/images/h1.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a></section>#}
+                <ul>
+                    {% for  ra in rankArticles %}
+                        <li><i></i><a href="/diary/{{ ra.category }}/content-{{ ra.id }}.html">{{ ra.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="ad whitebg imgscale">
+                <ul>
+                    <a href="/"><img src="/static/images/ad.jpg"></a>
+                </ul>
+            </div>
+            <div class="whitebg tuijian">
+                <h2 class="htitle">本栏推荐</h2>
+                {#                <section class="topnews imgscale"><a href="/"><img#}
+                {#                        src="/static/images/h2.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a></section>#}
+                <ul>
+                    {% for refa in refArticles %}
+
+                    <li><a href="/diary/{{ refa.category }}/content-{{ refa.id }}.html"><i><img src="/media/{{ refa.img }}"></i>
+                        <p>{{ refa.title }}</p>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="ad whitebg imgscale">
+                <ul>
+                    <a href="/"><img src="/static/images/ad.jpg"></a>
+                </ul>
+            </div>
+        </div>
+            {#            <div class="whitebg cloud">#}
+            {#                <h2 class="htitle">标签云</h2>#}
+            {#                <ul>#}
+            {#                    {% for tag in tags %}#}
+            {#                        <a href="" target="_blank">个人博客模板</a> <a href="" target="_blank">css动画</a> <a href=""#}
+            {#                                                                                                      target="_blank">布局</a>#}
+            {#                        <a href="" target="_blank">今夕何夕</a> <a href="" target="_blank">SEO</a>#}
+            {#                        <a href="" target="_blank">女程序员</a>#}
+            {#                        <a href="" target="_blank">小世界</a> <a href="" target="_blank">个人博客</a>#}
+            {#                        <a href="" target="_blank">网页设计</a>#}
+            {#                    {% endfor %}#}
+            {#                </ul>#}
+            {#            </div>#}
+            {#            <div class="whitebg wenzi">#}
+            {#                <h2 class="htitle">猜你喜欢</h2>#}
+            {#                <ul>#}
+            {#                    <li><a href="/">十条设计原则教你学会如何设计网页布局!</a></li>#}
+            {#                    <li><a href="/">用js+css3来写一个手机栏目导航</a></li>#}
+            {#                    <li><a href="/">6条网页设计配色原则,让你秒变配色高手</a></li>#}
+            {#                    <li><a href="/">三步实现滚动条触动css动画效果</a></li>#}
+            {#                    <li><a href="/">个人博客，属于我的小世界！</a></li>#}
+            {#                    <li><a href="/">安静地做一个爱设计的女子</a></li>#}
+            {#                    <li><a href="/">个人网站做好了，百度不收录怎么办？来，看看他们怎么做的。</a></li>#}
+            {#                    <li><a href="/">做个人博客如何用帝国cms美化留言增加头像选择</a></li>#}
+            {#                </ul>#}
+            {#            </div>#}
+            {#            <div class="ad whitebg imgscale">#}
+            {#                <ul>#}
+            {#                    <a href="/"><img src="/static/images/ad02.jpg"></a>#}
+            {#                </ul>#}
+            {#            </div>#}
+            {#            <div class="whitebg tongji">#}
+            {#                <h2 class="htitle">站点信息</h2>#}
+            {#                <ul>#}
+            {#                    <li><b>建站时间</b>：2018-10-24</li>#}
+            {#                    <li><b>网站程序</b>：帝国cms</li>#}
+            {#                    <li><b>主题模板</b>：<a href="http://www.yangqq.com" target="_blank">《今夕何夕》</a></li>#}
+            {#                    <li><b>文章统计</b>：299条</li>#}
+            {#                    <li><b>文章评论</b>：490条</li>#}
+            {#                    <li><b>统计数据</b>：<a href="/">百度统计</a></li>#}
+            {#                    <li><b>微信公众号</b>：扫描二维码，关注我们</li>#}
+            {#                    <img src="/static/images/wxgzh.jpg" class="tongji_gzh">#}
+            {#                </ul>#}
+            {#            </div>#}
+
+    </article>
+{% endblock %}
