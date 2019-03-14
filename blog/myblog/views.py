@@ -115,3 +115,6 @@ def content(request, aid):
 
 # def time(request):
 #     return render(request, 'info.html')
+#
+# def search(request):
+#     ss =
