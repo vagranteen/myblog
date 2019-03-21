@@ -8,7 +8,8 @@ urlpatterns = [
     path('diary/', views.diary, name='diary'),
     path('track/', views.track, name='track'),
     path('life/', views.life, name='life'),
-    path('blogroll/', views.blogroll, name='blogroll'),
+
+    path('search/', views.search, name='search'),
     path('diary/cpp/', views.cpp),
     path('diary/java/', views.java),
     path('diary/linux/', views.linux),

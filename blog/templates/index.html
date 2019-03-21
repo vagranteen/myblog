@@ -42,11 +42,11 @@
             <div class="tab_box whitebg">
                 <div class="tab_buttons">
                     <ul>
-                        <li class="newscurrent">最近发表</li>
-                        {#                        <li>工作日记</li>#}
-                        {#                        <li>心路历程</li>#}
-                        {#                        <li>我的博客</li>#}
-                        {#                        <li>前端技术</li>#}
+                        <li class="newscurrent">最新发表</li>
+{#                                                <li>工作日记</li>#}
+{#                                                <li>心路历程</li>#}
+{#                                                <li>我的博客</li>#}
+{#                                                <li>前端技术</li>#}
                     </ul>
                 </div>
                 <div class="newstab">
@@ -67,12 +67,12 @@
                             </ul>
                         </div>
                         <ul class="newslist">
-                            {% for rea  in indexArticless %}
+                            {% for na  in newArticles %}
 
                                 <li><i></i><a
-                                        href="/diary/{{ rea.category }}/content-{{ rea.id }}.html">{{ rea.title }}</a>
+                                        href="/diary/{{ na.category }}/content-{{ na.id }}.html">{{ na.title }}</a>
                                     <p>
-                                        {{ rea.excerpt }}
+                                        {{ na.excerpt }}
                                     </p>
                                 </li>
 
@@ -84,17 +84,18 @@
                 </div>
             </div>
             <!--tab_box end-->
-            <div class="zhuanti whitebg">
-                <h2 class="htitle"><span class="hnav"></span>精彩专题</h2>
-                <ul>
-                    {% for zta in ztArticles %}
-                        <li><i class="ztpic"><a href="/diary/{{ zta.category }}/content-{{ zta.id }}.html"
-                                                target="_blank"><img src="media/{{ zta.img }}"></a></i>
-                            <b>{{ zta.title }}</b><span>z{{ zta.excerpt }}</span><a
-                                    href="/diary/{{ zta.category }}/content-{{ zta.id }}.html" target="_blank" class="readmore">文章阅读</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
+{#            <div class="zhuanti whitebg">#}
+{#                <h2 class="htitle"><span class="hnav"><a href="/">原创模板</a><a href="/">古典</a><a href="/">清新</a><a href="/">低调</a></span>精彩专题</h2>#}
+{##}
+{#                <ul>#}
+{#                    {% for zta in ztArticles %}#}
+{#                        <li><i class="ztpic"><a href="/diary/{{ zta.category }}/content-{{ zta.id }}.html"#}
+{#                                                target="_blank"><img src="media/{{ zta.img }}"></a></i>#}
+{#                            <b>{{ zta.title }}</b><span>z{{ zta.excerpt }}</span><a#}
+{#                                    href="/diary/{{ zta.category }}/content-{{ zta.id }}.html" target="_blank" class="readmore">文章阅读</a></li>#}
+{#                    {% endfor %}#}
+{#                </ul>#}
+{#            </div>#}
             <div class="ad whitebg"><img src="static/images/longad.jpg"></div>
             <div class="whitebg bloglist">
                 <h2 class="htitle">博文列表</h2>
@@ -194,16 +195,17 @@
                     {% endfor %}
                 </ul>
             </div>
+
             <div class="whitebg tuijian">
                 <h2 class="htitle">站长推荐</h2>
                 <section class="topnews imgscale"><img
                         src="static/images/h2.jpg">
                 </section>
                 <ul>
-                    {% for rfa in refArticles %}
-                        <li><a href="/diary/{{ rfa.category }}/content-{{ rfa.id }}.html"><i><img
-                                src="/media/{{ rfa.img }}"></i>
-                            <p>{{ rfa.title }}</p>
+                    {% for rcmda in recommendArticle %}
+                        <li><a href="/diary/{{ rcmda.category }}/content-{{ rcmda.id }}.html"><i><img
+                                src="/media/{{ rcmda.img }}"></i>
+                            <p>{{ rcmda.title }}</p>
                         </a></li>
                     {% endfor %}
                 </ul>
@@ -219,38 +221,30 @@
                         src="static/images/4.jpg">
                 </section>
                 <ul>
-                    {% for rfa in refArticles %}
-                        <li><a href="/diary/{{ rfa.category }}/content-{{ rfa.id }}.html"
-                            <p>{{ rfa.title }}</p>
+                    {% for gul in guessYouLike %}
+                        <li><a href="/diary/{{ gul.category }}/content-{{ gul.id }}.html">
+                            <p>{{ gul.title }}</p></a>
                         </li>
                     {% endfor %}
 
                 </ul>
             </div>
+
             <div class="ad whitebg imgscale">
                 <ul>
                     <a href="/"><img src="static/images/ad02.jpg"></a>
                 </ul>
             </div>
-            {#            <div class="whitebg tongji">#}
-            {#                <h2 class="htitle">站点信息</h2>#}
-            {#                <ul>#}
-            {#                    <li><b>建站时间</b>：2018-10-24</li>#}
-            {#                    <li><b>网站程序</b>：帝国CMS7.5</li>#}
-            {#                    <li><b>主题模板</b>：<a href="http://www.yangqq.com" target="_blank">《今夕何夕》</a></li>#}
-            {#                    <li><b>文章统计</b>：299条</li>#}
-            {#                    <li><b>文章评论</b>：490条</li>#}
-            {#                    <li><b>统计数据</b>：<a href="/">百度统计</a></li>#}
-            {#                    <li><b>微信公众号</b>：扫描二维码，关注我们</li>#}
-            {#                    <img src="static/images/wxgzh.jpg" class="tongji_gzh">#}
-            {#                </ul>#}
-            {#            </div>#}
+
             <div class="links whitebg">
                 <h2 class="htitle"><span class="sqlink"></span>友情链接</h2>
                 <ul>
-                    <li><a href="http://www.yangqq.com" target="_blank">杨青青个人博客</a></li>
+                    {% for link in blogroll %}
+                    <li><a href="{{ link.linkurl }}" target="_blank">{{ link.name }}</a></li>
+                    {% endfor %}
                 </ul>
             </div>
+
         </div>
     </article>
 {% endblock %}

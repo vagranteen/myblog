@@ -5,16 +5,16 @@
         <div class="lbox">
             <div class="content_box whitebg">
                 <h2 class="htitle"><span class="con_nav">您现在的位置是：<a href="/">网站首页</a>><a
-                        href="/">{{ article.category }}</a></span>{{ article.category }}
+                        href="/diary/{{ article.category }}">{{ article.category }}</a></span>{{ article.category }}
                 </h2>
                 <h1 class="con_tilte">{{ article.title }}</h1>
                 <p class="bloginfo"><i class="avatar"><img
                         src="/static/images/w.jpg"></i><span>{{ article.user }}</span><span>{{ article.create_time|date:"y-m-d" }}</span><span>【<a
-                        href="/">{{ article.category }}</a>】</span><span>{{ article.views }}人已围观</span></p>
+                        href="/diary/{{ article.category }}">{{ article.category }}</a>】</span><span>{{ article.views }}人已围观</span></p>
                 <p class="con_info"><b>简介</b>{{ article.excerpt }}</p>
                 <div class="con_text">
                     {{ article.body|safe }}
-                    <p class="share"><b>转载：</b>感谢您对本站的认可，非常欢迎各位朋友分享到个人站长或者朋友圈，但转载请说明文章出处“来源燕永辉个人博客”。
+                    <p class="share"><b>转载：</b>感谢您对本站的认可，非常欢迎各位朋友分享到个人站长或者朋友圈，但转载请说明文章出处"www.yanyh.com"。
                     </p>
                     <p><span class="diggit">很赞哦！ (74)</span></p>
                     <div class="nextinfo">
@@ -80,14 +80,14 @@
             </div>
             <div class="whitebg tuijian">
                 <h2 class="htitle">本栏推荐</h2>
-                {#                <section class="topnews imgscale"><a href="/"><img#}
-                {#                        src="/static/images/h2.jpg"><span>6条网页设计配色原则,让你秒变配色高手</span></a></section>#}
+                                <section class="topnews imgscale"><img
+                                        src="/static/images/h2.jpg"></section>
                 <ul>
-                    {% for refa in refArticles %}
-
-                    <li><a href="/diary/{{ refa.category }}/content-{{ refa.id }}.html"><i><img src="/media/{{ refa.img }}"></i>
-                        <p>{{ refa.title }}</p>
+                    {%  for rcmda  in recommendArticle %}
+                    <li><a href="/diary/{{ rcmda.category }}/content-{{ rcmda.id }}.html"></a><i><img src="/media/{{ rcmda.img }}"></i>
+                        <p>{{ rcmda.title }}</p>
                     {% endfor %}
+
                 </ul>
             </div>
             <div class="ad whitebg imgscale">
@@ -107,37 +107,6 @@
             {#                        <a href="" target="_blank">小世界</a> <a href="" target="_blank">个人博客</a>#}
             {#                        <a href="" target="_blank">网页设计</a>#}
             {#                    {% endfor %}#}
-            {#                </ul>#}
-            {#            </div>#}
-            {#            <div class="whitebg wenzi">#}
-            {#                <h2 class="htitle">猜你喜欢</h2>#}
-            {#                <ul>#}
-            {#                    <li><a href="/">十条设计原则教你学会如何设计网页布局!</a></li>#}
-            {#                    <li><a href="/">用js+css3来写一个手机栏目导航</a></li>#}
-            {#                    <li><a href="/">6条网页设计配色原则,让你秒变配色高手</a></li>#}
-            {#                    <li><a href="/">三步实现滚动条触动css动画效果</a></li>#}
-            {#                    <li><a href="/">个人博客，属于我的小世界！</a></li>#}
-            {#                    <li><a href="/">安静地做一个爱设计的女子</a></li>#}
-            {#                    <li><a href="/">个人网站做好了，百度不收录怎么办？来，看看他们怎么做的。</a></li>#}
-            {#                    <li><a href="/">做个人博客如何用帝国cms美化留言增加头像选择</a></li>#}
-            {#                </ul>#}
-            {#            </div>#}
-            {#            <div class="ad whitebg imgscale">#}
-            {#                <ul>#}
-            {#                    <a href="/"><img src="/static/images/ad02.jpg"></a>#}
-            {#                </ul>#}
-            {#            </div>#}
-            {#            <div class="whitebg tongji">#}
-            {#                <h2 class="htitle">站点信息</h2>#}
-            {#                <ul>#}
-            {#                    <li><b>建站时间</b>：2018-10-24</li>#}
-            {#                    <li><b>网站程序</b>：帝国cms</li>#}
-            {#                    <li><b>主题模板</b>：<a href="http://www.yangqq.com" target="_blank">《今夕何夕》</a></li>#}
-            {#                    <li><b>文章统计</b>：299条</li>#}
-            {#                    <li><b>文章评论</b>：490条</li>#}
-            {#                    <li><b>统计数据</b>：<a href="/">百度统计</a></li>#}
-            {#                    <li><b>微信公众号</b>：扫描二维码，关注我们</li>#}
-            {#                    <img src="/static/images/wxgzh.jpg" class="tongji_gzh">#}
             {#                </ul>#}
             {#            </div>#}
 

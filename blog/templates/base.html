@@ -30,35 +30,35 @@
                 <li><a href="/">首页</a></li>
                 <li class="menu"><a href="/diary/">学习笔记</a>
                     <ul class="sub">
-{#                        <li><a href="/diary/java/">Java</a></li>#}
-{#                        <li><a href="/diary/python/">Python</a></li>#}
-{#                        <li><a href="/diary/linux/">Linux</a></li>#}
-{#                        <li><a href="/diary/cpp/">C++</a></li>#}
+                        <li><a href="/diary/java/">Java</a></li>
+                        <li><a href="/diary/python/">Python</a></li>
+                        <li><a href="/diary/linux/">Linux</a></li>
+                        <li><a href="/diary/cpp/">C++</a></li>
                     </ul>
                 </li>
 {#                <li><a href="/life/">生活点滴</a></li>#}
 {#                <li><a href="/track/">我的足迹</a></li>#}
 {#                <li><a href="/blogroll/">友情链接</a></li>#}
-{#                <li><a href="/about/">关于我</a></li>#}
+                <li><a href="/about/">关于我</a></li>
             </ul>
         </nav>
-{#        <div class="searchico"></div>#}
+        <div class="searchico"></div>
     </div>
 </header>
-{#<div class="searchbox">#}
-{#    <div class="search">#}
-{#        <form action="/search/" method="post" name="searchform" id="searchform">#}
-{#            <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字词" style="color: rgb(153, 153, 153);"#}
-{#                   onfocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}"#}
-{#                   onblur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">#}
-{#            <input name="show" value="title" type="hidden">#}
-{#            <input name="tempid" value="1" type="hidden">#}
-{#            <input name="tbname" value="news" type="hidden">#}
-{#            <input name="Submit" class="input_submit" value="搜索" type="submit">#}
-{#        </form>#}
-{#    </div>#}
-{#    <div class="searchclose"></div>#}
-{#</div>#}
+<div class="searchbox">
+    <div class="search">
+        <form action="/search/" method="get" name="searchform" id="searchform">
+            <input name="keyboard"  class="input_text" value="请输入关键字词" style="color: rgb(153, 153, 153);"
+                   onfocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}"
+                   onblur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
+            <input name="show" value="title" type="hidden">
+            <input name="tempid" value="1" type="hidden">
+            <input name="tbname" value="news" type="hidden">
+            <input name="Submit" class="input_submit" value="搜索" type="submit">
+        </form>
+    </div>
+    <div class="searchclose"></div>
+</div>
 <!--top end-->
 {% block content %}
 {% endblock %}
