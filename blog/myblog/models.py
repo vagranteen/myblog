@@ -10,6 +10,7 @@ class Category(models.Model):
     index = models.IntegerField(default=1, verbose_name='分类排序')
 
     class Meta:
+        db_table = 'Category'
         verbose_name = '博客分类'
         verbose_name_plural = verbose_name
 
@@ -22,6 +23,7 @@ class Tag(models.Model):
     name = models.CharField('文章标签', max_length=100)
 
     class Meta:
+        db_table='Tag'
         verbose_name = '文章标签'
         verbose_name_plural = verbose_name
 
@@ -34,6 +36,7 @@ class Tui(models.Model):
     name = models.CharField('推荐位', max_length=100)
 
     class Meta:
+        db_table='Tui'
         verbose_name = '推荐位'
         verbose_name_plural = verbose_name
 
@@ -57,6 +60,7 @@ class Article(models.Model):
     modifile_time = models.DateTimeField('修改时间', auto_now=True)
 
     class Meta:
+        db_table='Article'
         verbose_name = '文章'
         verbose_name_plural = verbose_name
 
@@ -72,6 +76,7 @@ class Banner(models.Model):
     is_active = models.BooleanField('是否active', default=False)
 
     class Meta:
+        db_table='Banner'
         verbose_name = '轮播图'
         verbose_name_plural = verbose_name
 
@@ -86,6 +91,7 @@ class Link(models.Model):
     linkurl = models.URLField('网址', max_length=100)
 
     class Meta:
+        db_table='Link'
         verbose_name = '友情链接'
         verbose_name_plural = verbose_name
 

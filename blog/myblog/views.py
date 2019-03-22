@@ -3,13 +3,13 @@ from myblog.models import Article, Category,Link
 from django.db.models import Sum
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+from django.contrib.auth.hashers import make_password
+
+
+
 
 # Create your views here.
 
-def gloable():
-    otherArticles = Article.objects.filter(category=1)[:11]
-    rankArticles = Article.objects.all().order_by('-views')[:8]
-    refArticles = Article.objects.filter(category=1).order_by('-views')[:8]
 def index(request):
     indexArticles = Article.objects.all()
     newArticles = Article.objects.all().order_by("-create_time")[:5]
@@ -30,7 +30,6 @@ def index(request):
     guessYouLike = Article.objects.filter(tui=3).order_by('-create_time')[:8]#彩泥喜欢
     blogroll = Link.objects.all() #友情链接
 
-
     return render(request, 'index.html', locals())
 
 
@@ -43,9 +42,10 @@ def diary(request):
     cpprticles = Article.objects.filter(category=2)[:6]
     pythonArticles = Article.objects.filter(category=3)[:6]
     linuxArticles = Article.objects.filter(category=4)[:6]
+    databasesArticles = Article.objects.filter(category=5)[:6]
     rankArticles = Article.objects.all().order_by('-views')[:8]
     recommendArticle = Article.objects.all().order_by('-create_time')[:8]
-
+    blogroll = Link.objects.all()
 
     return render(request, 'diary.html', locals())
 
@@ -160,7 +160,7 @@ def search(request):
     kw = request.GET.get('keyboard')
     ssArticles = Article.objects.filter(title__contains=kw)
     page = request.GET.get('page')
-    paginator = Paginator(ssArticles, 10)
+    paginator = Paginator(ssArticles, 8)
     try:
         ssArticles = paginator.page(page)  # 获取当前页码的记录
     except PageNotAnInteger:
@@ -169,5 +169,21 @@ def search(request):
         ssArticles = paginator.page(paginator.num_pages)
     rankArticles = Article.objects.all().order_by('-views')[:8]
     recommendArticle = Article.objects.all().order_by('-create_time')[:8]
+    blogroll = Link.objects.all()
 
     return render(request, 'search.html', locals())
+
+def databases(request):
+    databasesrticles = Article.objects.filter(category=5)
+    page = request.GET.get('page')
+    paginator = Paginator(databasesrticles, 7)
+    try:
+        databasesrticles = paginator.page(page)  # 获取当前页码的记录
+    except PageNotAnInteger:
+        databasesrticles = paginator.page(1)  # 如果用户输入的页码不是整数时,显示第1页的内容
+    except EmptyPage:
+        databasesrticles = paginator.page(paginator.num_pages)  # 如果用户输入的页数不在系统的页码列表中时,显示最后一页的内容
+    rankArticles = Article.objects.all().order_by('-views')[:8]
+    recommendArticle = Article.objects.filter(category=5).order_by('-create_time')[:8]
+
+    return render(request, 'databases.html', locals())

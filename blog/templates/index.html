@@ -43,10 +43,10 @@
                 <div class="tab_buttons">
                     <ul>
                         <li class="newscurrent">最新发表</li>
-{#                                                <li>工作日记</li>#}
-{#                                                <li>心路历程</li>#}
-{#                                                <li>我的博客</li>#}
-{#                                                <li>前端技术</li>#}
+                        {#                                                <li>工作日记</li>#}
+                        {#                                                <li>心路历程</li>#}
+                        {#                                                <li>我的博客</li>#}
+                        {#                                                <li>前端技术</li>#}
                     </ul>
                 </div>
                 <div class="newstab">
@@ -84,30 +84,31 @@
                 </div>
             </div>
             <!--tab_box end-->
-{#            <div class="zhuanti whitebg">#}
-{#                <h2 class="htitle"><span class="hnav"><a href="/">原创模板</a><a href="/">古典</a><a href="/">清新</a><a href="/">低调</a></span>精彩专题</h2>#}
-{##}
-{#                <ul>#}
-{#                    {% for zta in ztArticles %}#}
-{#                        <li><i class="ztpic"><a href="/diary/{{ zta.category }}/content-{{ zta.id }}.html"#}
-{#                                                target="_blank"><img src="media/{{ zta.img }}"></a></i>#}
-{#                            <b>{{ zta.title }}</b><span>z{{ zta.excerpt }}</span><a#}
-{#                                    href="/diary/{{ zta.category }}/content-{{ zta.id }}.html" target="_blank" class="readmore">文章阅读</a></li>#}
-{#                    {% endfor %}#}
-{#                </ul>#}
-{#            </div>#}
-            <div class="ad whitebg"><img src="static/images/longad.jpg"></div>
+            {#            <div class="zhuanti whitebg">#}
+            {#                <h2 class="htitle"><span class="hnav"><a href="/">原创模板</a><a href="/">古典</a><a href="/">清新</a><a href="/">低调</a></span>精彩专题</h2>#}
+            {##}
+            {#                <ul>#}
+            {#                    {% for zta in ztArticles %}#}
+            {#                        <li><i class="ztpic"><a href="/diary/{{ zta.category }}/content-{{ zta.id }}.html"#}
+            {#                                                target="_blank"><img src="media/{{ zta.img }}"></a></i>#}
+            {#                            <b>{{ zta.title }}</b><span>z{{ zta.excerpt }}</span><a#}
+            {#                                    href="/diary/{{ zta.category }}/content-{{ zta.id }}.html" target="_blank" class="readmore">文章阅读</a></li>#}
+            {#                    {% endfor %}#}
+            {#                </ul>#}
+            {#            </div>#}
+            <div class="ad whitebg"><a href="https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=cdru5f07"
+                                       target="_blank"> <img src="/static/images/ad/960x220.png"> </a></div>
             <div class="whitebg bloglist">
                 <h2 class="htitle">博文列表</h2>
                 <ul>
                     {% for article in indexArticles %}
                         <li>
-                            <h3 class="blogtitle"><a href="/" target="_blank">{{ article.title }}</a></h3>
+                            <h3 class="blogtitle"><a href="/diary/{{ article.category }}/content-{{ article.id }}.html" >{{ article.title }}</a></h3>
                             <span class="blogpic imgscale"><i><a href="/">
                                 {% for tag in article.tags.all %}
                                     {{ tag }}
                                 {% endfor %}
-                            </a></i><a href="/" title=""><img
+                            </a></i><a href="/diary/{{ article.category }}/content-{{ article.id }}.html" title=""><img
                                     src="/media/{{ article.img }}" srcset="/media/{{ article.img }}" alt=""></a></span>
                             <p class="blogtext">{{ article.excerpt | safe }}</p>
 
@@ -210,9 +211,10 @@
                     {% endfor %}
                 </ul>
             </div>
-            <div class="ad whitebg imgscale">
+           <div class="ad whitebg imgscale">
                 <ul>
-                    <a href="/"><img src="static/images/ad.jpg"></a>
+                    <a href="https://promotion.aliyun.com/ntms/act/enterprise-discount.html?userCode=cdru5f07"
+                       target="_blank"><img src="/static/images/ad/259_194.jpg"></a>
                 </ul>
             </div>
             <div class="whitebg wenzi">
@@ -230,17 +232,19 @@
                 </ul>
             </div>
 
-            <div class="ad whitebg imgscale">
-                <ul>
-                    <a href="/"><img src="static/images/ad02.jpg"></a>
-                </ul>
+            <div class="whitebg tongji">
+                <h2 class="htitle">微信公众号</h2>
+                <p>扫面二维码，关注我，一起学习交流</p>
+                    <img src="/static/images/gzh.jpg" class="tongji_gzh">
+
             </div>
+
 
             <div class="links whitebg">
                 <h2 class="htitle"><span class="sqlink"></span>友情链接</h2>
                 <ul>
                     {% for link in blogroll %}
-                    <li><a href="{{ link.linkurl }}" target="_blank">{{ link.name }}</a></li>
+                        <li><a href="{{ link.linkurl }}" target="_blank">{{ link.name }}</a></li>
                     {% endfor %}
                 </ul>
             </div>

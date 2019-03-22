@@ -14,7 +14,10 @@ urlpatterns = [
     path('diary/java/', views.java),
     path('diary/linux/', views.linux),
     path('diary/python/', views.python),
+    path('diary/databases/', views.databases),
 
+    path('diary/databases/content-<int:aid>.html', views.content),
+    path('diary/数据库/content-<int:aid>.html', views.content),
     path('diary/java/content-<int:aid>.html', views.content),
     path('diary/track/content-<int:aid>.html', views.content),
     path('diary/点滴生活/content-<int:aid>.html', views.content),

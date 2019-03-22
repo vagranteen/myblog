@@ -84,7 +84,8 @@
             </div>
             <div class="ad whitebg imgscale">
                 <ul>
-                    <a href="/"><img src="/static/images/ad.jpg"></a>
+                    <a href="https://promotion.aliyun.com/ntms/act/enterprise-discount.html?userCode=cdru5f07"
+                       target="_blank"><img src="/static/images/ad/259_194.jpg"></a>
                 </ul>
             </div>
             <div class="whitebg tuijian">
@@ -99,9 +100,18 @@
                     {% endfor %}
                 </ul>
             </div>
-            <div class="ad whitebg imgscale">
+            <div class="whitebg tongji">
+                <h2 class="htitle">微信公众号</h2>
+                <p>扫面二维码，关注我，一起学习交流</p>
+                <img src="/static/images/gzh.jpg" class="tongji_gzh">
+
+            </div>
+            <div class="links whitebg">
+                <h2 class="htitle"><span class="sqlink"></span>友情链接</h2>
                 <ul>
-                    <a href="/"><img src="/static/images/ad.jpg"></a>
+                    {% for link in blogroll %}
+                        <li><a href="{{ link.linkurl }}" target="_blank">{{ link.name }}</a></li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
