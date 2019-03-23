@@ -22,6 +22,7 @@ header::before { background: #000 linear-gradient(to left, #4cd964, #5ac8fa, #00
 .logo a { color: #FFF }
 .logo img { margin-top: 14px; }
 .imgscale img { width: 100%; ; -moz-transition: all .5s ease; -webkit-transition: all .5s ease; -ms-transition: all .5s ease; -o-transition: all .5s ease; transition: all .5s ease; transition: all 0.5s; }
+.imgscale img2 { width: 200px;height: 150px ; -moz-transition: all .5s ease; -webkit-transition: all .5s ease; -ms-transition: all .5s ease; -o-transition: all .5s ease; transition: all .5s ease; transition: all 0.5s; }
 .imgscale:hover img { transform: scale(1.1); }
 /*nav*/
 nav { float: left; height: 50px; line-height: 50px; text-align: center; }
